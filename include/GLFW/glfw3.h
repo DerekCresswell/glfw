@@ -994,6 +994,15 @@ extern "C" {
  *  [window hint](@ref GLFW_SCALE_TO_MONITOR).
  */
 #define GLFW_SCALE_TO_MONITOR       0x0002200C
+
+/*! @brief Defines the X position of new windows.
+ */
+#define GLFW_POSITION_X 0x0002200D
+
+/*! @brief Defines the Y position of new windows.
+ */
+#define GLFW_POSITION_Y 0x0002200E
+
 /*! @brief macOS specific
  *  [window hint](@ref GLFW_COCOA_RETINA_FRAMEBUFFER_hint).
  */

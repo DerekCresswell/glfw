@@ -237,7 +237,18 @@ GLFWAPI GLFWwindow* glfwCreateWindow(int width, int height,
     {
         if (wndconfig.visible)
         {
+            int xPos, yPos;
+
             _glfwPlatformShowWindow(window);
+
+            // Get default window position and set initial position
+            // if one was specified
+            _glfwPlatformGetWindowPos(window, &xPos, &yPos);
+            xPos = _glfw.hints.xIntialPositionSet ? _glfw.hints.xIntialPosition : xPos;
+            yPos = _glfw.hints.yIntialPositionSet ? _glfw.hints.yIntialPosition : yPos;
+
+            _glfwPlatformSetWindowPos(window, xPos, yPos);
+
             if (wndconfig.focused)
                 _glfwPlatformFocusWindow(window);
         }
@@ -410,6 +421,14 @@ GLFWAPI void glfwWindowHint(int hint, int value)
             return;
         case GLFW_REFRESH_RATE:
             _glfw.hints.refreshRate = value;
+            return;
+        case GLFW_POSITION_X:
+            _glfw.hints.xIntialPosition = value;
+            _glfw.hints.xIntialPositionSet = GLFW_TRUE;
+            return;
+        case GLFW_POSITION_Y:
+            _glfw.hints.yIntialPosition = value;
+            _glfw.hints.yIntialPositionSet = GLFW_TRUE;
             return;
     }
 

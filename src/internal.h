@@ -524,6 +524,10 @@ struct _GLFWlibrary
         _GLFWwndconfig  window;
         _GLFWctxconfig  context;
         int             refreshRate;
+        int             xIntialPosition;
+        GLFWbool        xIntialPositionSet;
+        int             yIntialPosition;
+        GLFWbool        yIntialPositionSet;
     } hints;
 
     _GLFWerror*         errorListHead;
